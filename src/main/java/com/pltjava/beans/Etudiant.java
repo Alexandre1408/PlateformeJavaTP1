@@ -1,4 +1,5 @@
 package com.pltjava.beans;
+
 import java.util.HashMap;
 import java.util.ArrayList;
 
