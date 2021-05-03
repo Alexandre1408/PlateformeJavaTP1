@@ -4,9 +4,12 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  
+
+
   <welcome-file-list>  
    <welcome-file>connexion.jsp</welcome-file> 
-  </welcome-file-list>  
+  </welcome-file-list> 
+  
+
 
 </web-app>

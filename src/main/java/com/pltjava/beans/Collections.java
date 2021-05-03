@@ -5,15 +5,31 @@ import java.util.ArrayList;
 public class Collections 
 {
 	private ArrayList<Etudiant> ListeEtudiants;
-	private ArrayList <Matiere> ListeMatieres;
-	private ArrayList <Promotion> ListePromotions;
+	private ArrayList<Matiere> ListeMatieres;
+	private ArrayList<Promotion> ListePromotions;
+	private ArrayList<Utilisateur> ListeUtilisateurs;
 
 	public Collections()
 	{
 		ListeEtudiants = new ArrayList<Etudiant>();	
 		ListeMatieres = new ArrayList <Matiere>();
 		ListePromotions = new ArrayList<Promotion>();
+		ListeUtilisateurs = new ArrayList<Utilisateur>();
 	}
+	
+
+	//Ajoute un etudiant dans la liste des etudiants
+	public void addUtilisateur(Utilisateur utilisateurToAdd)
+	{
+		ListeUtilisateurs.add(utilisateurToAdd);
+	}
+	
+	//Enleve un etudiant dans la liste des etudiants
+	public void removeUtilisateur(Utilisateur utilisateurToRemove)
+	{
+		ListeUtilisateurs.remove(utilisateurToRemove);
+	}
+
 
 	//Ajoute un etudiant dans la liste des etudiants
 	public void addEtudiant(Etudiant etuToAdd)
@@ -55,6 +71,12 @@ public class Collections
 	{
 		return ListeEtudiants;
 	}
+	
+	public ArrayList<Utilisateur> getListeUtilisateurs() 
+	{
+		return ListeUtilisateurs;
+	}
+	
 
 	public void setListeEtudiants(ArrayList<Etudiant> listeEtudiants) 
 	{
