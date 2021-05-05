@@ -3,26 +3,15 @@ package com.pltjava.beans;
 import java.util.HashMap;
 import java.util.ArrayList;
 
-public class Etudiant 
-{
-	private static long cpt = 0;
-	private long idEtu;
+public class Etudiant {
 	private String nomEtu;
 	private HashMap<String,ArrayList<Float>> listeNotes= new HashMap<String,ArrayList<Float>>();
 	
-	public Etudiant(String nomEtu, HashMap<String, ArrayList<Float>> listesNotes) 
-	{
+	public Etudiant(String nomEtu, HashMap<String, ArrayList<Float>> listesNotes) {
 		setNomEtu(nomEtu);
 		setListeNotes(listeNotes);
-		cpt++;
-		idEtu = cpt;
 	}
 	
-	public long getIdEtu() 
-	{
-		return idEtu;
-	}
-
 	public HashMap<String, ArrayList<Float>> getListeNotes() {
 		return listeNotes;
 	}
