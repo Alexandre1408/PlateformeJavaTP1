@@ -1,4 +1,4 @@
-package com.pltjava.form;
+package com.pltjava.forms;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,8 +19,8 @@ public final class ConnexionForm {
 
     public Utilisateur connecterUtilisateur(HttpServletRequest request) {
         
-    	Collections.addUtilisateur(new Utilisateur("banane", "banane", null, false));
-    	Collections.addUtilisateur(new Utilisateur("pomme", "pomme", null, true));
+    	Database.addUtilisateur(new Utilisateur("banane", "banane", null, false));
+    	Database.addUtilisateur(new Utilisateur("pomme", "pomme", null, true));
     	
     	Utilisateur user = null;
     	
@@ -29,13 +29,13 @@ public final class ConnexionForm {
 
         if(verifNom(nom))
         {
-        	if(Collections.userExists(nom))
+        	if(Database.userExists(nom))
         	{
         		if(verifMdp(mdp))
             	{
-            		if(Collections.verifyPassword(nom, mdp))
+            		if(Database.verifyPassword(nom, mdp))
             		{
-            			user = Collections.getUserByName(nom);
+            			user = Database.getUserByName(nom);
             			
             	    	HttpSession session = request.getSession();
             	    	session.setAttribute("nom", user.getUsername());

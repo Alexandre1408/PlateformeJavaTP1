@@ -4,11 +4,12 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.ArrayList;
 
-public class Etudiant 
+public class Etudiant implements Comparable<Etudiant> 
 {
 	private static long cpt = 0;
 	private long idEtu;
 	private String nomEtu;
+	private float moyenneGeneral;
 	private HashMap<Matiere,ArrayList<Float>> listeNotes= new HashMap<Matiere,ArrayList<Float>>();
 	
 	public Etudiant(String nomEtu, HashMap<Matiere, ArrayList<Float>> listesNotes) 
@@ -17,6 +18,7 @@ public class Etudiant
 		listeNotes = listesNotes;
 		cpt++;
 		idEtu = cpt;
+		moyenneGeneral = moyenneNotes();
 	}
 	
 	
@@ -28,29 +30,50 @@ public class Etudiant
 		
 		for (Entry<Matiere, ArrayList<Float>> entry : listeNotes.entrySet()) 
 		{
-			sommeTotalNotes = 0.0f;
-			
 		    Matiere Matiere = entry.getKey();
 		    ArrayList<Float> listeNotesParMatiere = entry.getValue();
 		    float coefficientMatiere = Matiere.getCoeff();
-		    
-			for(Float noteIterator : listeNotesParMatiere)
-			{
-				 sommeTotalNotes += noteIterator;
-			}
-			
-		    total += coefficientMatiere*(sommeTotalNotes/listeNotesParMatiere.size());
-		    sommeCoeff += coefficientMatiere;
+			sommeTotalNotes = 0.0f;
+
+		    if(listeNotesParMatiere.isEmpty())
+		    {}
+		    else
+		    {
+				for(Float noteIterator : listeNotesParMatiere)
+				{
+					 sommeTotalNotes += noteIterator;
+				}
+				
+			    total += coefficientMatiere*(sommeTotalNotes/listeNotesParMatiere.size());
+			    sommeCoeff += coefficientMatiere;
+		    }
 		}
 		return total/sommeCoeff;
+	}
+	
+	
+	public float getMoyenneGeneral() 
+	{
+		return moyenneGeneral;
+	}
+
+
+	public void setMoyenneGeneral(float moyenneGeneral) 
+	{
+		this.moyenneGeneral = moyenneGeneral;
+	}
+	
+	@Override
+	public int compareTo(Etudiant etudiant) 
+	{
+	    return (this.getMoyenneGeneral() < etudiant.getMoyenneGeneral() ? -1 : 
+            (this.getMoyenneGeneral() == etudiant.getMoyenneGeneral() ? 0 : 1));
 	}
 	
 	public long getIdEtu() 
 	{
 		return idEtu;
 	}
-
-
 
 	public HashMap<Matiere, ArrayList<Float>> getListeNotes() 
 	{
@@ -82,4 +105,6 @@ public class Etudiant
 	{
 		listeNotes.put(matiere, notes);
 	}
+
+
 }

@@ -1,15 +1,16 @@
 package com.pltjava.beans;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class Collections 
+public class Database 
 {
 	private static ArrayList<Etudiant> ListeEtudiants = new ArrayList<Etudiant>();
 	private static ArrayList<Matiere> ListeMatieres = new ArrayList <Matiere>();
 	private static ArrayList<Promotion> ListePromotions = new ArrayList<Promotion>();
 	private static ArrayList<Utilisateur> ListeUtilisateurs = new ArrayList<Utilisateur>();
 
-	private Collections() {}
+	private Database() {}
 	
 	public static boolean userExists(String nom)
 	{
@@ -48,6 +49,12 @@ public class Collections
 		}
 		return null;
 	}
+	
+	public ArrayList<Etudiant> getSortedEtudiantByMoyenne() 
+	{         
+		Collections.sort(ListeEtudiants);         
+		return ListeEtudiants;     
+	} 
 	
 	//Ajoute un etudiant dans la liste des etudiants
 	public static void addUtilisateur(Utilisateur utilisateurToAdd)
