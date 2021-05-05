@@ -6,7 +6,7 @@
         <title>Inscription</title>
     </head>
     <body>
-        <form method="post" action="inscription">
+        <form method="post" action="admin">
             <fieldset>
                 <legend>Inscription</legend>
                 <p>Vous pouvez vous inscrire via ce formulaire.</p>

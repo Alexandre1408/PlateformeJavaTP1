@@ -6,14 +6,16 @@ public class Matiere {
 	private static long cpt = 0;
 	private long idMatiere;
 	
-	public Matiere(String nomMatiere,Float coeff) {
+	public Matiere(String nomMatiere,Float coeff) 
+	{
 		setNomMatiere(nomMatiere);
 		setCoeff(coeff);
 		cpt++;
 		idMatiere = cpt;
 	}
 	
-	public String getNomMatiere() {
+	public String getNomMatiere() 
+	{
 		return nomMatiere;
 	}
 
