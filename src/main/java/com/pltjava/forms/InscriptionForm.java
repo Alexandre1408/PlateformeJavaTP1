@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.pltjava.beans.Collections;
 import com.pltjava.beans.Utilisateur;
 
 
@@ -108,13 +109,13 @@ public class InscriptionForm {
         {
             setErreur(CHAMP_NAME,e.getMessage());
         }
-        user.setName(name);
+        user.setEtudiant(Collections.getEtudiantByName(name));
 
         if (erreurs.isEmpty())
             resultat = "Succès de l'inscription.";
         else
             resultat = "Échec de l'inscription.";
-
+        
         return user;
     }
 

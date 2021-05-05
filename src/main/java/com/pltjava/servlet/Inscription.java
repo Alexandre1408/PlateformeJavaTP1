@@ -14,26 +14,17 @@ import com.pltjava.forms.InscriptionForm;
  * Servlet implementation class Inscription
  */
 public class Inscription extends HttpServlet {
-    private static final String ATT_USER = "utilisateur";
+	private static final long serialVersionUID = 1L;
+	private static final String ATT_USER = "utilisateur";
     public static final String ATT_FORM = "form";
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Inscription() {
-        super();
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+ 
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Affiche la page d'inscription
 		this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		InscriptionForm form = new InscriptionForm(); //Objet formulaire
 		

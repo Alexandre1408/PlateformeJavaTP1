@@ -1,4 +1,4 @@
-package com.pltjava.form;
+package com.pltjava.forms;
 
 import java.util.HashMap;
 import java.util.Map;

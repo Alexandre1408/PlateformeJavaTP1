@@ -49,6 +49,18 @@ public class Collections
 		return null;
 	}
 	
+	public static Etudiant getEtudiantByName(String nom)
+	{
+		for(Etudiant etu : ListeEtudiants)
+		{
+			if(etu.getNomEtu().equals(nom))
+			{
+				return etu;
+			}
+		}
+		return null;
+	}
+	
 	//Ajoute un etudiant dans la liste des etudiants
 	public static void addUtilisateur(Utilisateur utilisateurToAdd)
 	{
