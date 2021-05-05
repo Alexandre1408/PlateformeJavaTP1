@@ -3,16 +3,20 @@ package com.pltjava.beans;
 public class Utilisateur {
 	private String username;
 	private String password;
+	private String name;
 	private Etudiant etu;
 	private boolean isAdmin;
 	
-	public Utilisateur(String username, String password, Etudiant etu, boolean isAdmin)
+	public Utilisateur()
 	{
-		setUsername(username);
-		setPassword(password);
-		setAdmin(isAdmin);
-		if(!isAdmin)
-			setEtudiant(etu);
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public String getUsername() {
