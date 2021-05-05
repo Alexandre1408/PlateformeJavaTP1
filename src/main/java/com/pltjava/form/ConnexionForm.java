@@ -20,6 +20,7 @@ public final class ConnexionForm {
     public Utilisateur connecterUtilisateur(HttpServletRequest request) {
         
     	Collections.addUtilisateur(new Utilisateur("banane", "banane", null, false));
+    	Collections.addUtilisateur(new Utilisateur("pomme", "pomme", null, true));
     	
     	Utilisateur user = null;
     	
@@ -41,16 +42,16 @@ public final class ConnexionForm {
             			
             			if(user.getAdmin())
             			{
-            				System.out.println("BISMILA");
+            				//FENETRE ADMIN
             			}
             			else
             			{
-            				System.out.println("pas BISMILA");
+            				//FENETRE NORMAL
             			}
             		}
             		else
             		{
-                    	errors.put("mdp", "Ce mot de passe n'existe pas");
+                    	errors.put("mdp", "Mot de passe invalide");
             		}
             	}
         		else

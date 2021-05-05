@@ -15,8 +15,7 @@ public class Collections
 	{
 		for(Utilisateur user : ListeUtilisateurs)
 		{
-			System.out.println(user.getUsername());
-			if(user.getUsername() == nom)
+			if(user.getUsername().equals(nom))
 			{
 				return true;
 			}
@@ -29,7 +28,7 @@ public class Collections
 	{
 		for(Utilisateur user : ListeUtilisateurs)
 		{
-			if(user.getUsername() == nom && user.getPassword() == mdp)
+			if(user.getUsername().equals(nom) && user.getPassword().equals(mdp))
 			{
 				return true;
 			}
@@ -42,7 +41,7 @@ public class Collections
 	{
 		for(Utilisateur user : ListeUtilisateurs)
 		{
-			if(user.getUsername() == nom)
+			if(user.getUsername().equals(nom))
 			{
 				return user;
 			}
