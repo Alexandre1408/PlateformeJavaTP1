@@ -15,6 +15,7 @@ public class Connexion extends HttpServlet {
 	
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /* Affichage de la page de connexion */
+    	this.getServletContext().getRequestDispatcher("/connexion.jsp").forward(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

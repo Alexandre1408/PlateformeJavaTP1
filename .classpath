@@ -30,6 +30,5 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Polytech Tours/DI4/PlateformeJavaTP1/taglibs-standard-impl-1.2.5.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

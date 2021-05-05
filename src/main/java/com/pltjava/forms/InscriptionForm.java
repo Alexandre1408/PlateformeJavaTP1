@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.pltjava.beans.Collections;
+import com.pltjava.beans.Etudiant;
 import com.pltjava.beans.Utilisateur;
 
 
@@ -14,7 +15,7 @@ public class InscriptionForm {
 	private static final String CHAMP_PASSWORD = "password";
     private static final String CHAMP_CONFIRMATION = "confirmation";
     private static final String CHAMP_NAME = "name";
-    
+    private static final String CHECKBOX_ISAMIN = "isadmin";
     private String resultat;
     private Map<String, String> erreurs = new HashMap<String, String>();
 
@@ -46,8 +47,13 @@ public class InscriptionForm {
     //Verifie si le pseudo rentré est conforme
     private void checkUsername(String username) throws Exception 
     {
+    	if(username ==null)
+    		throw new Exception("Le nom d'utilisateur ne peut pas être nul");
     	if(username != null && username.length()<3) 
             throw new Exception("Le nom d'utilisateur doit contenir au moins 3 caractères.");
+    	else if(Collections.userExists(username))
+    		throw new Exception("Ce nom d'utilisateur est déjà utilisé.");
+    		
     }
 
     //Vérifie si les deux mots de passe sont conformes
@@ -63,25 +69,31 @@ public class InscriptionForm {
     }
 
     //Verifie si le nom 
-    private void checkName(String name) throws Exception 
+    private void checkName(String name,boolean isAdmin) throws Exception 
     {
-        if (name==null)
-            throw new Exception( "Le nom de l'étudiant ne peut pas être vide." );
+        if (name==null && isAdmin==false)
+            throw new Exception("Le nom de l'étudiant ne peut pas être vide.");
+        else if (Collections.etudiantExists(name)==false && isAdmin==false)
+        	throw new Exception("L'étudiant n'existe pas.");
     }
 
     //Ajoute un message correspondant au champ spécifié à la map des erreurs
     private void setErreur(String champ,String message) {
-        erreurs.put( champ, message );
+        erreurs.put(champ,message);
     }
     
     public Utilisateur inscrireUtilisateur(HttpServletRequest request) 
     {
+    	Collections.addEtudiant(new Etudiant("Kaaris",null));
+    	Collections.addUtilisateur(new Utilisateur("banane", "banane", null));
+    	Collections.addUtilisateur(new Utilisateur("pomme", "pomme"));
+    	
+    	
         String username = getChamp(request,CHAMP_USERNAME);
         String password = getChamp(request,CHAMP_PASSWORD);
         String confirmation = getChamp(request,CHAMP_CONFIRMATION);
         String name = getChamp(request,CHAMP_NAME);
-
-        Utilisateur user = new Utilisateur();
+        boolean isAdmin = request.getParameter(CHECKBOX_ISAMIN) != null;
 
         try
         {
@@ -90,7 +102,6 @@ public class InscriptionForm {
         {
             setErreur(CHAMP_USERNAME,e.getMessage());
         }
-        user.setUsername(username);
 
         try 
         {
@@ -100,23 +111,32 @@ public class InscriptionForm {
             setErreur(CHAMP_PASSWORD,e.getMessage());
             setErreur(CHAMP_CONFIRMATION,e.getMessage());
         }
-        user.setPassword(password);
 
         try 
         {
-        	checkName(name);
+        	checkName(name,isAdmin);
         } catch (Exception e) 
         {
             setErreur(CHAMP_NAME,e.getMessage());
         }
-        user.setEtudiant(Collections.getEtudiantByName(name));
-
-        if (erreurs.isEmpty())
-            resultat = "Succès de l'inscription.";
-        else
-            resultat = "Échec de l'inscription.";
+       
         
-        return user;
+        if (erreurs.isEmpty()) //Si pas d'erreur on crée l'utilisateur
+        {
+            resultat = "Succès de l'inscription."; 
+            Utilisateur user;
+            
+            if(isAdmin)
+            	user = new Utilisateur(username,password);
+            else
+            	user = new Utilisateur(username,password,Collections.getEtudiantByName(name));
+        	
+            Collections.addUtilisateur(user);
+            return user;
+        }
+        else //Si des erreurs on return null
+            resultat = "Échec de l'inscription.";
+        	return null;
     }
 
 }

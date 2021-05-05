@@ -33,7 +33,6 @@ public class Inscription extends HttpServlet {
 		request.setAttribute(ATT_FORM,form);
         request.setAttribute(ATT_USER,user);
         
-        
         this.getServletContext().getRequestDispatcher("/inscription.jsp").forward( request, response );
 		
 	}

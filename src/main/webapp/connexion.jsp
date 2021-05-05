@@ -20,11 +20,11 @@
                 <input type="password" id="mdp" name="mdp" value="" size="20" maxlength="20" />
                 <span class="erreur">${form.errors['mdp']}</span>
                 <br />
-
+                
                 <input type="submit" value="Connexion" class="sansLabel" />
             </fieldset>
         </form>
-        <form method="post" action="inscription">
+        <form method="get" action="inscription">
             <fieldset>
                 <input type="submit" value="Inscription" class="sansLabel" />
             </fieldset>

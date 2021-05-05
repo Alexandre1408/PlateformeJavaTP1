@@ -19,8 +19,8 @@ public final class ConnexionForm {
 
     public Utilisateur connecterUtilisateur(HttpServletRequest request) {
         
-    	Collections.addUtilisateur(new Utilisateur("banane", "banane", null, false));
-    	Collections.addUtilisateur(new Utilisateur("pomme", "pomme", null, true));
+    	Collections.addUtilisateur(new Utilisateur("banane", "banane", null));
+    	Collections.addUtilisateur(new Utilisateur("pomme", "pomme"));
     	
     	Utilisateur user = null;
     	

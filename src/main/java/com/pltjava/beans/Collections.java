@@ -60,7 +60,18 @@ public class Collections
 		}
 		return null;
 	}
-	
+	public static boolean etudiantExists(String nom)
+	{
+		for(Etudiant etu : ListeEtudiants)
+		{
+			if(etu.getNomEtu().equals(nom))
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
 	//Ajoute un etudiant dans la liste des etudiants
 	public static void addUtilisateur(Utilisateur utilisateurToAdd)
 	{
