@@ -1,18 +1,19 @@
 package com.pltjava.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pltjava.beans.Database;
 import com.pltjava.forms.AdminForm;
 
 /**
  * Servlet implementation class Admin
  */
-public class Admin extends HttpServlet {
+public class Admin extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
        
 	/**
@@ -23,19 +24,19 @@ public class Admin extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		AdminForm form = new AdminForm();
-		form.orderedEtudiantList();
-		form.remplirlisteEtuParPromo();
+		AdminForm adminForm = new AdminForm();
+		adminForm.orderedEtudiantList();
+		adminForm.remplirlisteEtuParPromo();
 		
-        request.setAttribute( "form", form );
-        //request.setAttribute( "etudiants");
-        
+        request.setAttribute("form", adminForm );
         this.getServletContext().getRequestDispatcher("/admin.jsp").forward( request, response );	
     }
 }
+
+
+

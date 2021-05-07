@@ -11,7 +11,6 @@
         <title>Admin View</title>
     </head>
     <body>
-
 		
 		<c:forEach items="${form.listeEtuParPromo}" var="entry"> 
 		
@@ -22,7 +21,9 @@
 		    </c:forEach>
 		    
 		</c:forEach>
- 
-
+		
+   	    <form method="post" action="Deconnexion">
+	        <input type="submit" value="Deconnexion" class="sansLabel" />
+	    </form>
     </body>
 </html>
