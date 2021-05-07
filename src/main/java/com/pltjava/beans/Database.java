@@ -9,6 +9,7 @@ public class Database
 	private static ArrayList<Utilisateur> ListeUtilisateurs = new ArrayList<Utilisateur>();
 
 	public Database() {
+		//initializeData();
 	}
 	
 	public static boolean userExists(String nom)
@@ -133,7 +134,6 @@ public class Database
 	
 	public static void initializeData()
 	{
-		System.out.println("début");
 		HashMap<Matiere,ArrayList<Float>> test = new HashMap<Matiere,ArrayList<Float>>();
 		
 		Matiere Anglais = new Matiere("Anglais", 3.0f);
@@ -149,13 +149,14 @@ public class Database
 		test.put(Anglais, NotesAnglaisEtudiant1);
 		test.put(Maths, NotesMathsEtudiant1);
 
-	    Etudiant Etudiant1 = new Etudiant("Kaaris",test );   
+	    Etudiant Kaaris = new Etudiant("Kaaris",test );   
 	    Etudiant Booba = new Etudiant("Booba", 15);  
 	    Etudiant Pablo = new Etudiant("Pablo", 7);  
 	    Etudiant Popio = new Etudiant("Popio", 20);
 
 	    ArrayList<Etudiant> ListeEtudiantDi4 = new ArrayList<Etudiant>();
-	    ListeEtudiantDi4.add(Etudiant1);
+
+	    ListeEtudiantDi4.add(Kaaris);
 	    ListeEtudiantDi4.add(Booba);
 	    ListeEtudiantDi4.add(Pablo);
 	    ListeEtudiantDi4.add(Popio);
@@ -183,8 +184,6 @@ public class Database
 
 	    
 		Promotion Di3 = new Promotion("Di3",ListeEtudiantDi3, ListeMatiereDi3);
-		Database.addPromotion(Di3);
-    	
-		System.out.println(Database.getListePromotions().size());
+		Database.addPromotion(Di3);    	
 	}
 }

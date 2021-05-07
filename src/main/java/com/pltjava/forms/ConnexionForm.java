@@ -17,8 +17,8 @@ public final class ConnexionForm {
 		return errors;
 	}
 
-    public Utilisateur connecterUtilisateur(HttpServletRequest request) {
-        
+    public void connecterUtilisateur(HttpServletRequest request) 
+    {
     	
     	Utilisateur user = null;
     	
@@ -34,6 +34,8 @@ public final class ConnexionForm {
             		if(Database.verifyPassword(nom, mdp))
             		{
             			user = Database.getUserByName(nom);
+            			
+
             			
             		}
             		else
@@ -55,8 +57,9 @@ public final class ConnexionForm {
         {
         	errors.put("nom", "Nom invalide");
         }
+    	HttpSession session = request.getSession();
+    	session.setAttribute("connectedUser", user);
 
-        return user;
     }
 
     

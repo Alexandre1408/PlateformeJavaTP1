@@ -1,8 +1,6 @@
 package com.pltjava.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -11,9 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.pltjava.beans.Database;
-import com.pltjava.beans.Matiere;
-import com.pltjava.beans.Etudiant;
+import com.pltjava.beans.Utilisateur;
 
 /**
  * Servlet implementation class Etudiants
@@ -37,8 +33,8 @@ public class Etudiants extends HttpServlet {
 				
 		HttpSession session = request.getSession();
 		
-		Etudiant etu = (Etudiant) session.getAttribute("etudiant");
-        request.setAttribute("etudiant", etu);
+		Utilisateur connectedUser = (Utilisateur) session.getAttribute("connectedUser");
+        request.setAttribute("etudiant", connectedUser.getEtudiant());
         
 		this.getServletContext().getRequestDispatcher("/etudiant.jsp").forward(request,response);
 	}
