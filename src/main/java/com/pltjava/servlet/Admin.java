@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.pltjava.beans.Database;
 import com.pltjava.forms.AdminForm;
 
 /**
@@ -28,9 +29,13 @@ public class Admin extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		System.out.println("ujfdahiofaouizfbuazoihfaohubzfoiuaz");
-		AdminForm Form = new AdminForm();
-		Form.orderedList();
-		response.sendRedirect("admin.jsp");
-	}
+		AdminForm form = new AdminForm();
+		form.orderedEtudiantList();
+		form.remplirlisteEtuParPromo();
+		
+        request.setAttribute( "form", form );
+        //request.setAttribute( "etudiants");
+        
+        this.getServletContext().getRequestDispatcher("/admin.jsp").forward( request, response );	
+    }
 }

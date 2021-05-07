@@ -30,6 +30,6 @@ public class Connexion extends HttpServlet
         form.connecterUtilisateur(request);
         
         request.setAttribute( "form", form );
-        this.getServletContext().getRequestDispatcher("/connexion.jsp").forward( request, response );
+        this.getServletContext().getRequestDispatcher("connexion.jsp").forward( request, response );
     }
 }

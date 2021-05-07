@@ -15,6 +15,11 @@ public class Utilisateur {
 			setEtudiant(etu);
 	}
 	
+	public Utilisateur() 
+	{
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getUsername() {
 		return username;
 	}

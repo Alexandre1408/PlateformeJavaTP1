@@ -11,20 +11,18 @@
         <title>Admin View</title>
     </head>
     <body>
-    
-		<%
-		 java.util.ArrayList<Integer> list = new java.util.ArrayList<Integer>();
-		 list.add(1);
-		 list.add(3);
-		 list.add(5);
-		 request.setAttribute("list", list);
-		%>
+
 		
-		<h1>Liste meilleurs étudiants </h1>
-			<ul>
-			 	<c:forEach items="${list}" var="value">
-					<li><c:out value="${value}"/>	</li>
-			 	</c:forEach>
-			</ul>
+		<c:forEach items="${form.listeEtuParPromo}" var="entry"> 
+		
+    		<h1>Promotion : ${entry.key.nomPromotion} , Moyenne de la promotion ${entry.key.moyennePromotion} </h1>
+		    
+		    <c:forEach items="${entry.value}" var="item" varStatus="loop">
+		        ${item.nomEtu} Moyenne generale ${item.moyenneGeneral} <br>
+		    </c:forEach>
+		    
+		</c:forEach>
+ 
+
     </body>
 </html>
