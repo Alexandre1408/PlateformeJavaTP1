@@ -9,7 +9,6 @@ public class Database
 	private static ArrayList<Utilisateur> ListeUtilisateurs = new ArrayList<Utilisateur>();
 
 	public Database() {
-		initializeData();
 	}
 	
 	public static boolean userExists(String nom)

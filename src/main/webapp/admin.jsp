@@ -22,7 +22,11 @@
 		    </c:forEach>
 		    
 		</c:forEach>
- 
+ 	<form method="get" action="NewPromotion">
+            <fieldset>
+                <input type="submit" value="NewPromotion" class="sansLabel" />
+            </fieldset>
+    </form>
 
     </body>
 </html>

@@ -22,8 +22,6 @@ public class Inscription extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Affiche la page d'inscription
-		//Database data=new Database();
-		
 		this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
 	}
 
@@ -36,8 +34,10 @@ public class Inscription extends HttpServlet {
 		request.setAttribute(ATT_FORM,form);
         request.setAttribute(ATT_USER,user);
         
-        if(form.getErreurs().isEmpty())     
-        	response.sendRedirect("connexion.jsp");   	
+        if(form.getErreurs().isEmpty())
+        {
+        	response.sendRedirect("connexion.jsp");
+        }
         else
         	this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request,response);
 	}

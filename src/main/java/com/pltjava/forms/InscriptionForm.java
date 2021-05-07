@@ -86,8 +86,8 @@ public class InscriptionForm {
     }
     
     public Utilisateur inscrireUtilisateur(HttpServletRequest request) 
-    {
-HashMap<Matiere,ArrayList<Float>> test = new HashMap<Matiere,ArrayList<Float>>();
+    {/*
+    	HashMap<Matiere,ArrayList<Float>> test = new HashMap<Matiere,ArrayList<Float>>();
 		
 		Matiere Anglais = new Matiere("Anglais", 3.0f);
 		ArrayList<Float> NotesAnglaisEtudiant1 = new ArrayList<Float>();
@@ -137,7 +137,7 @@ HashMap<Matiere,ArrayList<Float>> test = new HashMap<Matiere,ArrayList<Float>>()
 	    
 		Promotion Di3 = new Promotion("Di3",ListeEtudiantDi3, ListeMatiereDi3);
 		Database.addPromotion(Di3);
-    	
+    	*/
     	
         String username = getChamp(request,CHAMP_USERNAME);
         String password = getChamp(request,CHAMP_PASSWORD);
