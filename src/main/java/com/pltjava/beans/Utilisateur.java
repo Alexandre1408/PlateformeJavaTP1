@@ -14,6 +14,11 @@ public class Utilisateur {
 		setEtudiant(null);
 	}
 	
+	public Utilisateur() 
+	{
+		// TODO Auto-generated constructor stub
+	}
+
 	
 	public Utilisateur(String username, String password, Etudiant etu) //Constructeur pour compte étudiant
 	{
@@ -22,7 +27,6 @@ public class Utilisateur {
 		setAdmin(false);
 		setEtudiant(etu);
 	}
-	
 	
 	public String getUsername() {
 		return username;

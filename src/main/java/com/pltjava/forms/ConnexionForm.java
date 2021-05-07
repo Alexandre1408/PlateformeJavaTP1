@@ -19,6 +19,7 @@ public final class ConnexionForm {
 
     public Utilisateur connecterUtilisateur(HttpServletRequest request) {
         
+
     	Database.addUtilisateur(new Utilisateur("banane", "banane", null));
     	Database.addUtilisateur(new Utilisateur("pomme", "pomme"));
     	

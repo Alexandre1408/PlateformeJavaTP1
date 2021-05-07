@@ -32,7 +32,6 @@ public class Database
 				flag=true;
 			}
 		}
-		
 		return flag;
 	}
 	
@@ -63,6 +62,7 @@ public class Database
         return null;
     }
 	
+
 	public static boolean etudiantExists(String nom)
     {
 		boolean flag=false;
@@ -78,7 +78,6 @@ public class Database
 		}
         return flag;
     }
-	
 	public static Promotion getPromotionByEtudiant(String nom) 
 	{
         for(Promotion promotionIterator : ListePromotions)

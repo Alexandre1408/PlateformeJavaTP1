@@ -1,5 +1,6 @@
 package com.pltjava.forms;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,7 +57,6 @@ public class InscriptionForm {
             throw new Exception("Le nom d'utilisateur doit contenir au moins 3 caractères.");
     	else if(Database.userExists(username))
     		throw new Exception("Ce nom d'utilisateur est déjà utilisé.");
-    		
     }
 
     //Vérifie si les deux mots de passe sont conformes
@@ -87,7 +87,7 @@ public class InscriptionForm {
     
     public Utilisateur inscrireUtilisateur(HttpServletRequest request) 
     {
-    	HashMap<Matiere,ArrayList<Float>> test = new HashMap<Matiere,ArrayList<Float>>();
+    HashMap<Matiere,ArrayList<Float>> test = new HashMap<Matiere,ArrayList<Float>>();
 		
 		Matiere Anglais = new Matiere("Anglais", 3.0f);
 		ArrayList<Float> NotesAnglaisEtudiant1 = new ArrayList<Float>();
@@ -154,6 +154,7 @@ public class InscriptionForm {
         {
             setErreur(CHAMP_USERNAME,e.getMessage());
         }
+
 
         try 
         {

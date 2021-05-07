@@ -33,6 +33,7 @@
 
                 <label for="name">Nom de l'étudiant (non nécessaire si compte administrateur)<span class="requis"> </span></label>
                 <input type="text" id="name" name="name" value="" size="20" maxlength="20" />
+              
                 <span class="erreur">${form.erreurs['name']}</span>
                 <br />
                 <div>
@@ -44,11 +45,7 @@
                 <br />
                 
                 <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
-            </fieldset>
-        </form>
-        <form method="get" action="connexion">
-            <fieldset>
-                <input type="submit" value="Connexion" class="sansLabel" />
+              
             </fieldset>
         </form>
     </body>
