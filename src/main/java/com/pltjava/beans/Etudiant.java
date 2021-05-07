@@ -21,6 +21,13 @@ public class Etudiant implements Comparable<Etudiant>
 		moyenneGeneral = moyenneNotes();
 	}
 	
+	public Etudiant(String nom,float moyenneGenerale)
+	{
+		nomEtu = nom;
+		cpt++;
+		idEtu = cpt;
+		moyenneGeneral = moyenneGenerale;
+	}
 	
 	public float moyenneNotes()
 	{
@@ -51,6 +58,12 @@ public class Etudiant implements Comparable<Etudiant>
 		return total/sommeCoeff;
 	}
 	
+	@Override
+	public int compareTo(Etudiant etudiant) 
+	{
+	    return (this.getMoyenneGeneral() < etudiant.getMoyenneGeneral() ? 1 : 
+            (this.getMoyenneGeneral() == etudiant.getMoyenneGeneral() ? 0 : -1));
+	}
 	
 	public float getMoyenneGeneral() 
 	{
@@ -63,12 +76,7 @@ public class Etudiant implements Comparable<Etudiant>
 		this.moyenneGeneral = moyenneGeneral;
 	}
 	
-	@Override
-	public int compareTo(Etudiant etudiant) 
-	{
-	    return (this.getMoyenneGeneral() < etudiant.getMoyenneGeneral() ? -1 : 
-            (this.getMoyenneGeneral() == etudiant.getMoyenneGeneral() ? 0 : 1));
-	}
+
 	
 	public long getIdEtu() 
 	{

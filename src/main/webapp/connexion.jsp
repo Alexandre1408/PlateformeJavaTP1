@@ -8,7 +8,7 @@
         <link type="text/css" rel="stylesheet" href="form.css" />
     </head>
     <body>
-        <form method="post" action="admin">
+        <form method="post" action="connexion">
             <fieldset>
                 <legend>Connexion</legend>
                 <label for="nom">Identifiant <span class="requis">*</span></label>
@@ -24,7 +24,7 @@
                 <input type="submit" value="Connexion" class="sansLabel" />
             </fieldset>
         </form>
-        <form method="post" action="inscription">
+        <form method="get" action="inscription">
             <fieldset>
                 <input type="submit" value="Inscription" class="sansLabel" />
             </fieldset>

@@ -6,15 +6,27 @@ public class Utilisateur {
 	private Etudiant etu;
 	private boolean isAdmin;
 	
-	public Utilisateur(String username, String password, Etudiant etu, boolean isAdmin)
+    public Utilisateur(String username, String password) //Constructeur pour compte admin
+    {
+        setUsername(username);
+        setPassword(password);
+        setAdmin(true);
+        setEtudiant(null);
+    }
+    
+	public Utilisateur(String username, String password, Etudiant etu) //Constructeur pour compte étudiant
 	{
-		setUsername(username);
-		setPassword(password);
-		setAdmin(isAdmin);
-		if(!isAdmin)
-			setEtudiant(etu);
+	    setUsername(username);
+	    setPassword(password);
+	    setAdmin(false);
+	    setEtudiant(etu);
 	}
 	
+	public Utilisateur() 
+	{
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getUsername() {
 		return username;
 	}

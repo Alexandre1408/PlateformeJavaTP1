@@ -7,26 +7,43 @@ import com.pltjava.beans.*;
 
 public class AdminForm 
 {	
-	public ArrayList<Etudiant> orderedList()
-	{
-		HashMap<Matiere,ArrayList<Float>> test = new HashMap<Matiere,ArrayList<Float>>();
-		
-		Matiere Anglais = new Matiere("Anglais", 3.0f);
-		ArrayList<Float> NotesAnglaisEtudiant1 = new ArrayList<Float>();
-		NotesAnglaisEtudiant1.add(5.0f);
-		NotesAnglaisEtudiant1.add(5.0f);
-		
-		Matiere Maths = new Matiere("Maths", 9.0f);
-		ArrayList<Float> NotesMathsEtudiant1 = new ArrayList<Float>();
-		NotesMathsEtudiant1.add(15.0f);
-		NotesMathsEtudiant1.add(15.0f);
-		
-		test.put(Anglais, NotesAnglaisEtudiant1);
-		test.put(Maths, NotesMathsEtudiant1);
+	private HashMap<Promotion,ArrayList<Etudiant>> listeEtuParPromo = new HashMap<Promotion,ArrayList<Etudiant>>();
 
-	    Etudiant Etudiant1 = new Etudiant("Kaaris",test );         
-	    System.out.println(Etudiant1.getMoyenneGeneral());
+	
+	public void orderedEtudiantList()
+	{	
+		System.out.println(Database.getListePromotions().size());
 		
-		return null;
+		if(Database.getListePromotions().size() > 0 )
+		{
+			System.out.println(Database.getListePromotions().size());
+		}
+		else
+		{
+			for(Promotion promotionIterator : Database.getListePromotions())
+			{
+				promotionIterator.getSortedEtudiantByMoyenne();
+			}
+		}
 	}
+	
+	
+	public void remplirlisteEtuParPromo()
+	{
+		for(Promotion promotionIterator : Database.getListePromotions())
+		{
+			listeEtuParPromo.put(promotionIterator, promotionIterator.getListeEtu());
+		}
+	}
+	
+
+
+	public HashMap<Promotion, ArrayList<Etudiant>> getListeEtuParPromo() {
+		return listeEtuParPromo;
+	}
+
+	public void setListeEtuParPromo(HashMap<Promotion, ArrayList<Etudiant>> listeEtuParPromo) {
+		this.listeEtuParPromo = listeEtuParPromo;
+	}
+
 }
