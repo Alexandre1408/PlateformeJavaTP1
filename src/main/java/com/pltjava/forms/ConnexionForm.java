@@ -19,8 +19,9 @@ public final class ConnexionForm {
 
     public Utilisateur connecterUtilisateur(HttpServletRequest request) {
         
-    	Database.addUtilisateur(new Utilisateur("banane", "banane", null, false));
-    	Database.addUtilisateur(new Utilisateur("pomme", "pomme", null, true));
+
+    	Database.addUtilisateur(new Utilisateur("banane", "banane", null));
+    	Database.addUtilisateur(new Utilisateur("pomme", "pomme"));
     	
     	Utilisateur user = null;
     	
@@ -37,17 +38,6 @@ public final class ConnexionForm {
             		{
             			user = Database.getUserByName(nom);
             			
-            	    	HttpSession session = request.getSession();
-            	    	session.setAttribute("nom", user.getUsername());
-            			
-            			if(user.getAdmin())
-            			{
-            				//FENETRE ADMIN
-            			}
-            			else
-            			{
-            				//FENETRE NORMAL
-            			}
             		}
             		else
             		{

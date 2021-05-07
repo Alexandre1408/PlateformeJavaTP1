@@ -24,15 +24,15 @@ public class Database
 	
 	public static boolean verifyPassword(String nom, String mdp)
 	{
+		boolean flag=false;
 		for(Utilisateur user : ListeUtilisateurs)
 		{
 			if(user.getUsername().equals(nom) && user.getPassword().equals(mdp))
 			{
-				return true;
+				flag=true;
 			}
 		}
-		
-		return false;
+		return flag;
 	}
 	
 	public static Utilisateur getUserByName(String nom)
@@ -62,6 +62,22 @@ public class Database
         return null;
     }
 	
+
+	public static boolean etudiantExists(String nom)
+    {
+		boolean flag=false;
+        for(Promotion promotionIterator : ListePromotions)
+		{
+	        for(Etudiant etu : promotionIterator.getListeEtu())
+	        {
+	            if(etu.getNomEtu().equals(nom))
+	            {
+	                flag=true;
+	            }
+	        }
+		}
+        return flag;
+    }
 	public static Promotion getPromotionByEtudiant(String nom) 
 	{
         for(Promotion promotionIterator : ListePromotions)
