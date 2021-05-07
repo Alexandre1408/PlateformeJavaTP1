@@ -33,7 +33,18 @@ public class Inscription extends HttpServlet {
 		request.setAttribute(ATT_FORM,form);
         request.setAttribute(ATT_USER,user);
         
-        this.getServletContext().getRequestDispatcher("/inscription.jsp").forward( request, response );
+        if(form.getErreurs().isEmpty())
+        {
+        	System.out.println("tout fonctionne");
+        	response.sendRedirect("connexion.jsp");
+        	
+        }
+        	
+        else
+        {
+        	System.out.println("ne marche pas");
+        	this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request,response);
+        }
 		
 	}
 
