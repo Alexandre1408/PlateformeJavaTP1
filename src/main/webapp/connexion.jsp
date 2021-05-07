@@ -11,12 +11,12 @@
         <form method="post" action="connexion">
             <fieldset>
                 <legend>Connexion</legend>
-                <label for="nom">Identifiant <span class="requis">*</span></label>
+                <label for="nom">Identifiant <span class="requis"></span></label>
                 <input type="text" id="id" name="id" value="" size="20" maxlength="60" />
                 <span class="erreur">${form.errors['nom']}</span>
                 <br />
 
-                <label for="motdepasse">Mot de passe <span class="requis">*</span></label>
+                <label for="motdepasse">Mot de passe <span class="requis"></span></label>
                 <input type="password" id="mdp" name="mdp" value="" size="20" maxlength="20" />
                 <span class="erreur">${form.errors['mdp']}</span>
                 <br />

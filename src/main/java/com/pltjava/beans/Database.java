@@ -2,14 +2,12 @@ package com.pltjava.beans;
 
 import java.util.ArrayList;
 
-public class Collections 
+public class Database 
 {
-	private static ArrayList<Etudiant> ListeEtudiants = new ArrayList<Etudiant>();
-	private static ArrayList<Matiere> ListeMatieres = new ArrayList <Matiere>();
 	private static ArrayList<Promotion> ListePromotions = new ArrayList<Promotion>();
 	private static ArrayList<Utilisateur> ListeUtilisateurs = new ArrayList<Utilisateur>();
 
-	private Collections() {}
+	private Database() {}
 	
 	public static boolean userExists(String nom)
 	{
@@ -26,15 +24,16 @@ public class Collections
 	
 	public static boolean verifyPassword(String nom, String mdp)
 	{
+		boolean flag=false;
 		for(Utilisateur user : ListeUtilisateurs)
 		{
 			if(user.getUsername().equals(nom) && user.getPassword().equals(mdp))
 			{
-				return true;
+				flag=true;
 			}
 		}
 		
-		return false;
+		return flag;
 	}
 	
 	public static Utilisateur getUserByName(String nom)
@@ -50,28 +49,51 @@ public class Collections
 	}
 	
 	public static Etudiant getEtudiantByName(String nom)
-	{
-		for(Etudiant etu : ListeEtudiants)
+    {
+        for(Promotion promotionIterator : ListePromotions)
 		{
-			if(etu.getNomEtu().equals(nom))
-			{
-				return etu;
-			}
+	        for(Etudiant etu : promotionIterator.getListeEtu())
+	        {
+	            if(etu.getNomEtu().equals(nom))
+	            {
+	                return etu;
+	            }
+	        }
+		}
+        return null;
+    }
+	
+	public static boolean etudiantExists(String nom)
+    {
+		boolean flag=false;
+        for(Promotion promotionIterator : ListePromotions)
+		{
+	        for(Etudiant etu : promotionIterator.getListeEtu())
+	        {
+	            if(etu.getNomEtu().equals(nom))
+	            {
+	                flag=true;
+	            }
+	        }
+		}
+        return flag;
+    }
+	
+	public static Promotion getPromotionByEtudiant(String nom) 
+	{
+        for(Promotion promotionIterator : ListePromotions)
+		{
+        	for(Etudiant etudiantIterator : promotionIterator.getListeEtu())
+        	{
+        		if(etudiantIterator.getNomEtu().equals(nom))
+        		{
+        			return promotionIterator;
+        		}
+        	}
 		}
 		return null;
 	}
-	public static boolean etudiantExists(String nom)
-	{
-		for(Etudiant etu : ListeEtudiants)
-		{
-			if(etu.getNomEtu().equals(nom))
-			{
-				return true;
-			}
-		}
-		
-		return false;
-	}
+	
 	//Ajoute un etudiant dans la liste des etudiants
 	public static void addUtilisateur(Utilisateur utilisateurToAdd)
 	{
@@ -85,29 +107,6 @@ public class Collections
 	}
 
 
-	//Ajoute un etudiant dans la liste des etudiants
-	public static void addEtudiant(Etudiant etuToAdd)
-	{
-		ListeEtudiants.add(etuToAdd);
-	}
-	
-	//Enleve un etudiant dans la liste des etudiants
-	public static void removeEtudiant(Etudiant etuToRemove)
-	{
-		ListeEtudiants.remove(etuToRemove);
-	}
-	
-	//Ajoute une matiere dans la liste des matieres
-	public static void addMatiere(Matiere matiereToAdd)
-	{
-		ListeMatieres.add(matiereToAdd);
-	}
-	
-	//Enleve une matiere dans la liste des matieres
-	public static void removeMatiere(Matiere matiereToRemove)
-	{
-		ListeMatieres.remove(matiereToRemove);
-	}
 	
 	//Ajoute une promotion dans la liste des promotions
 	public static void addPromotion(Promotion promotionToAdd)
@@ -121,31 +120,6 @@ public class Collections
 		ListePromotions.remove(promotionToRemove);
 	}
 	
-	public static ArrayList<Etudiant> getListeEtudiants()
-	{
-		return ListeEtudiants;
-	}
-	
-	public static ArrayList<Utilisateur> getListeUtilisateurs() 
-	{
-		return ListeUtilisateurs;
-	}
-
-	public static void setListeEtudiants(ArrayList<Etudiant> listeEtudiants) 
-	{
-		ListeEtudiants = listeEtudiants;
-	}
-
-	public static ArrayList<Matiere> getListeMatieres() 
-	{
-		return ListeMatieres;
-	}
-
-	public static void setListeMatieres(ArrayList<Matiere> listeMatieres)
-	{
-		ListeMatieres = listeMatieres;
-	}
-
 	public static ArrayList<Promotion> getListePromotions()
 	{
 		return ListePromotions;

@@ -19,8 +19,8 @@ public final class ConnexionForm {
 
     public Utilisateur connecterUtilisateur(HttpServletRequest request) {
         
-    	Collections.addUtilisateur(new Utilisateur("banane", "banane", null));
-    	Collections.addUtilisateur(new Utilisateur("pomme", "pomme"));
+    	Database.addUtilisateur(new Utilisateur("banane", "banane", null));
+    	Database.addUtilisateur(new Utilisateur("pomme", "pomme"));
     	
     	Utilisateur user = null;
     	
@@ -29,25 +29,14 @@ public final class ConnexionForm {
 
         if(verifNom(nom))
         {
-        	if(Collections.userExists(nom))
+        	if(Database.userExists(nom))
         	{
         		if(verifMdp(mdp))
             	{
-            		if(Collections.verifyPassword(nom, mdp))
+            		if(Database.verifyPassword(nom, mdp))
             		{
-            			user = Collections.getUserByName(nom);
+            			user = Database.getUserByName(nom);
             			
-            	    	HttpSession session = request.getSession();
-            	    	session.setAttribute("nom", user.getUsername());
-            			
-            			if(user.getAdmin())
-            			{
-            				//FENETRE ADMIN
-            			}
-            			else
-            			{
-            				//FENETRE NORMAL
-            			}
             		}
             		else
             		{
