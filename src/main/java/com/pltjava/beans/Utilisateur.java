@@ -6,14 +6,23 @@ public class Utilisateur {
 	private Etudiant etu;
 	private boolean isAdmin;
 	
-	public Utilisateur(String username, String password, Etudiant etu, boolean isAdmin)
+	public Utilisateur(String username, String password) //Constructeur pour compte 
 	{
 		setUsername(username);
 		setPassword(password);
-		setAdmin(isAdmin);
-		if(!isAdmin)
-			setEtudiant(etu);
+		setAdmin(true);
+		setEtudiant(null);
 	}
+	
+	
+	public Utilisateur(String username, String password, Etudiant etu) //Constructeur pour compte étudiant
+	{
+		setUsername(username);
+		setPassword(password);
+		setAdmin(false);
+		setEtudiant(etu);
+	}
+	
 	
 	public String getUsername() {
 		return username;
@@ -46,5 +55,8 @@ public class Utilisateur {
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+
+	
+	
 
 }
