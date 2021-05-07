@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.pltjava.beans.Database;
 import com.pltjava.beans.Utilisateur;
 import com.pltjava.forms.InscriptionForm;
 
@@ -17,10 +18,12 @@ public class Inscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String ATT_USER = "utilisateur";
     public static final String ATT_FORM = "form";
- 
+    
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Affiche la page d'inscription
+		//Database data=new Database();
+		
 		this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
 	}
 

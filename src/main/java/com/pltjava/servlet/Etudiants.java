@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.pltjava.beans.Database;
 import com.pltjava.beans.Matiere;
@@ -32,31 +34,13 @@ public class Etudiants extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+				
+		HttpSession session = request.getSession();
 		
-		//com.pltjava.beans.Etudiant etu = Collections.getEtudiantByNom((String) request.getSession().getAttribute("nom"));
-		//request.setAttribute( "etu", etu );
-		
-		
-		HashMap<Matiere,ArrayList<Float>> test = new HashMap<Matiere,ArrayList<Float>>();
+		Etudiant etu = (Etudiant) session.getAttribute("etudiant");
+        request.setAttribute("etudiant", etu);
         
-        Matiere Anglais = new Matiere("Anglais", 3.0f);
-        ArrayList<Float> NotesAnglaisEtudiant1 = new ArrayList<Float>();
-        NotesAnglaisEtudiant1.add(10.0f);
-        NotesAnglaisEtudiant1.add(10.0f);
-        
-        Matiere Maths = new Matiere("Maths", 9.0f);
-        ArrayList<Float> NotesMathsEtudiant1 = new ArrayList<Float>();
-        NotesMathsEtudiant1.add(15.0f);
-        NotesMathsEtudiant1.add(15.0f);
-        
-        test.put(Anglais, NotesAnglaisEtudiant1);
-        test.put(Maths, NotesMathsEtudiant1);
-
-        Etudiant Etudiant1 = new Etudiant("Kaaris",test);
-        request.setAttribute( "etudiant", Etudiant1 );
-        
-		this.getServletContext().getRequestDispatcher("/etudiant.jsp").forward( request, response );
+		this.getServletContext().getRequestDispatcher("/etudiant.jsp").forward(request,response);
 	}
 
 }

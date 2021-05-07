@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import com.pltjava.beans.Database;
 import com.pltjava.beans.Utilisateur;
 import com.pltjava.forms.ConnexionForm;
 
@@ -24,8 +24,9 @@ public class Connexion extends HttpServlet
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /* Préparation de l'objet formulaire */
-        System.out.println("aaaa");
+       
+    	/* Préparation de l'objet formulaire */
+    	
         ConnexionForm form = new ConnexionForm();
 
         /* Récupération de la session depuis la requête */
