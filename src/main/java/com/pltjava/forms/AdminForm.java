@@ -12,18 +12,10 @@ public class AdminForm
 	
 	public void orderedEtudiantList()
 	{	
-		System.out.println(Database.getListePromotions().size());
-		
-		if(Database.getListePromotions().size() > 0 )
+
+		for(Promotion promotionIterator : Database.getListePromotions())
 		{
-			System.out.println(Database.getListePromotions().size());
-		}
-		else
-		{
-			for(Promotion promotionIterator : Database.getListePromotions())
-			{
-				promotionIterator.getSortedEtudiantByMoyenne();
-			}
+			promotionIterator.getSortedEtudiantByMoyenne();
 		}
 	}
 	

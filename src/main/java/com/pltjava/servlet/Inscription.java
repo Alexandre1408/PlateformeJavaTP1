@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.pltjava.beans.Database;
 import com.pltjava.beans.Utilisateur;
 import com.pltjava.forms.InscriptionForm;
 
@@ -20,7 +21,12 @@ public class Inscription extends HttpServlet {
 
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {	
+    {
+    	if(Database.getListePromotions().size() == 0)
+    	{
+    		Database.initializeData();
+    	}
+    	
         this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
     }
 
