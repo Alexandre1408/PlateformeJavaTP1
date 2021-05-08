@@ -21,8 +21,6 @@
 	</servlet>
 	<servlet>
 		<servlet-name>Etudiants</servlet-name>
-		<display-name>Etudiants</display-name>
-		<description></description>
 		<servlet-class>com.pltjava.servlet.Etudiants</servlet-class>
 	</servlet>
 	<servlet>
@@ -30,6 +28,10 @@
 		<display-name>Deconnexion</display-name>
 		<description></description>
 		<servlet-class>com.pltjava.servlet.Deconnexion</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Suppresion</servlet-name>
+		<servlet-class>com.pltjava.servlet.Suppresion</servlet-class>
 	</servlet>
  	
 	<servlet-mapping>
@@ -54,6 +56,10 @@
 	<servlet-mapping>
 		<servlet-name>Deconnexion</servlet-name>
 		<url-pattern>/Deconnexion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Suppresion</servlet-name>
+		<url-pattern>/suppresion</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>

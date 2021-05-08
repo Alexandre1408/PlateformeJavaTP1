@@ -21,9 +21,9 @@ public class Admin extends HttpServlet
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -34,7 +34,7 @@ public class Admin extends HttpServlet
 		adminForm.remplirlisteEtuParPromo();
 		
         request.setAttribute("form", adminForm );
-        this.getServletContext().getRequestDispatcher("/admin.jsp").forward( request, response );	
+        this.getServletContext().getRequestDispatcher("/admin.jsp").forward(request, response );	
     }
 }
 

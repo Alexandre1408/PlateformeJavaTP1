@@ -28,6 +28,17 @@ public class AdminForm
 		}
 	}
 	
+	public void suppresionEleves(String[] etudiantNoms)
+	{
+		if (etudiantNoms != null) 
+		{
+			for (String etudiantNomIterator : etudiantNoms) 
+			{
+				Database.deleteEtudiantByName(etudiantNomIterator);
+			}
+		}
+	}
+	
 
 
 	public HashMap<Promotion, ArrayList<Etudiant>> getListeEtuParPromo() {

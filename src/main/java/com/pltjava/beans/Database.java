@@ -2,6 +2,7 @@ package com.pltjava.beans;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class Database 
 {
@@ -27,12 +28,13 @@ public class Database
 	
 	public static boolean verifyPassword(String nom, String mdp)
 	{
-		boolean flag=false;
+		boolean flag = false;
 		for(Utilisateur user : ListeUtilisateurs)
 		{
 			if(user.getUsername().equals(nom) && user.getPassword().equals(mdp))
 			{
-				flag=true;
+				flag = true;
+				break;
 			}
 		}
 		return flag;
@@ -65,10 +67,26 @@ public class Database
         return null;
     }
 	
+	public static void deleteEtudiantByName(String nom)
+	{
+		for(Promotion promotionIterator : ListePromotions)
+		{
+			Iterator<Etudiant> iterator = promotionIterator.getListeEtu().iterator();
+			
+			while(iterator.hasNext())
+			{
+				String nomEtu = iterator.next().getNomEtu();
+		    	if(nomEtu.equals(nom))
+		    	{
+		    		iterator.remove();
+		    	}
+		    }
+		}
+	}
 
 	public static boolean etudiantExists(String nom)
     {
-		boolean flag=false;
+		boolean flag = false;
         for(Promotion promotionIterator : ListePromotions)
 		{
 	        for(Etudiant etu : promotionIterator.getListeEtu())
@@ -76,6 +94,7 @@ public class Database
 	            if(etu.getNomEtu().equals(nom))
 	            {
 	                flag=true;
+					break;
 	            }
 	        }
 		}
