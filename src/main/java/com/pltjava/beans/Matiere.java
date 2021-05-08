@@ -5,12 +5,14 @@ public class Matiere {
 	
 	private Float coeff;
 	
-	public Matiere(String nomMatiere,Float coeff) {
+	public Matiere(String nomMatiere,Float coeff) 
+	{
 		setNomMatiere(nomMatiere);
 		setCoeff(coeff);
 	}
 	
-	public String getNomMatiere() {
+	public String getNomMatiere() 
+	{
 		return nomMatiere;
 	}
 
