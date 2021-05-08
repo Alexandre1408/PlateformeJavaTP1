@@ -174,6 +174,7 @@ public class Database
 	    Etudiant Popio = new Etudiant("Popio", 20);
 
 	    ArrayList<Etudiant> ListeEtudiantDi4 = new ArrayList<Etudiant>();
+
 	    ListeEtudiantDi4.add(Kaaris);
 	    ListeEtudiantDi4.add(Booba);
 	    ListeEtudiantDi4.add(Pablo);
