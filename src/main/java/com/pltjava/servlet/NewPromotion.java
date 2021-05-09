@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.pltjava.forms.NewPromotionForm;
+
 /**
  * Servlet implementation class NewPromotion
  */
@@ -16,14 +18,16 @@ public class NewPromotion extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/connexion.jsp").forward(request,response);
+		this.getServletContext().getRequestDispatcher("/newpromotion.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		NewPromotionForm form= new NewPromotionForm();
+		form.nouvellePromotion(request);
+		this.getServletContext().getRequestDispatcher("/admin").forward(request,response);
 	}
 
 }

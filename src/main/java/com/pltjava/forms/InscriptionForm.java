@@ -1,16 +1,12 @@
 package com.pltjava.forms;
 
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.pltjava.beans.Database;
-import com.pltjava.beans.Etudiant;
-import com.pltjava.beans.Matiere;
-import com.pltjava.beans.Promotion;
 import com.pltjava.beans.Utilisateur;
 
 

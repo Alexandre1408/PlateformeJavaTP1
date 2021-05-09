@@ -96,6 +96,19 @@ public class Database
 		return null;
 	}
 	
+	public static boolean PromotionExists(String nom) 
+	{
+		boolean flag=false;
+        for(Promotion promotionIterator : ListePromotions)
+		{
+            if(promotionIterator.getNomPromotion().equals(nom))
+            {
+                flag=true;
+            }
+		}
+        return flag;
+	}
+	
 	//Ajoute un etudiant dans la liste des etudiants
 	public static void addUtilisateur(Utilisateur utilisateurToAdd)
 	{
