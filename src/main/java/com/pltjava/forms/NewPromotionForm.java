@@ -76,25 +76,54 @@ public class NewPromotionForm {
         {
             resultat = "Succès de la création."; 
         	
-            Etudiant Etudiant1 = new Etudiant("Etudiant "+(int)(Math.random()*100),(float)Math.round((Math.random()*20)*100)/100);   
-    	    Etudiant Etudiant2 = new Etudiant("Etudiant "+(int)(Math.random()*100),(float)Math.round((Math.random()*20)*100)/100);  
-    	    Etudiant Etudiant3 = new Etudiant("Etudiant "+(int)(Math.random()*100),(float)Math.round((Math.random()*20)*100)/100);  
+            HashMap<Matiere,ArrayList<Float>> MapEtudiant1 = new HashMap<Matiere,ArrayList<Float>>();
+            HashMap<Matiere,ArrayList<Float>> MapEtudiant2 = new HashMap<Matiere,ArrayList<Float>>();
+            HashMap<Matiere,ArrayList<Float>> MapEtudiant3 = new HashMap<Matiere,ArrayList<Float>>();
+            
+            Matiere Matiere1 = new Matiere("Matiere "+(int)(Math.random()*100),(float)Math.round(Math.random()*10));
+    		Matiere Matiere2 = new Matiere("Matiere "+(int)(Math.random()*100),(float)Math.round(Math.random()*10));
+    		
+    	
+    		ArrayList<Float> NotesMatiere1Etudiant1 = new ArrayList<Float>();
+    		NotesMatiere1Etudiant1.add((float)Math.round((Math.random()*20)*100)/100);
+    		NotesMatiere1Etudiant1.add((float)Math.round((Math.random()*20)*100)/100);
+    		ArrayList<Float> NotesMatiere2Etudiant1 = new ArrayList<Float>();
+    		NotesMatiere2Etudiant1.add((float)Math.round((Math.random()*20)*100)/100);
+    		NotesMatiere2Etudiant1.add((float)Math.round((Math.random()*20)*100)/100);
+    		
+    		ArrayList<Float> NotesMatiere1Etudiant2 = new ArrayList<Float>();
+    		NotesMatiere1Etudiant2.add((float)Math.round((Math.random()*20)*100)/100);
+    		NotesMatiere1Etudiant2.add((float)Math.round((Math.random()*20)*100)/100);
+    		ArrayList<Float> NotesMatiere2Etudiant2 = new ArrayList<Float>();
+    		NotesMatiere2Etudiant2.add((float)Math.round((Math.random()*20)*100)/100);
+    		NotesMatiere2Etudiant2.add((float)Math.round((Math.random()*20)*100)/100);
+    		
+    		ArrayList<Float> NotesMatiere1Etudiant3 = new ArrayList<Float>();
+    		NotesMatiere1Etudiant3.add((float)Math.round((Math.random()*20)*100)/100);
+    		NotesMatiere1Etudiant3.add((float)Math.round((Math.random()*20)*100)/100);
+    		ArrayList<Float> NotesMatiere2Etudiant3 = new ArrayList<Float>();
+    		NotesMatiere2Etudiant3.add((float)Math.round((Math.random()*20)*100)/100);
+    		NotesMatiere2Etudiant3.add((float)Math.round((Math.random()*20)*100)/100);
+            
+    		MapEtudiant1.put(Matiere1,NotesMatiere1Etudiant1);
+    		MapEtudiant1.put(Matiere2,NotesMatiere2Etudiant1);
+    		
+    		MapEtudiant2.put(Matiere1,NotesMatiere1Etudiant2);
+    		MapEtudiant2.put(Matiere2,NotesMatiere2Etudiant2);
+    		
+    		MapEtudiant3.put(Matiere1,NotesMatiere1Etudiant3);
+    		MapEtudiant3.put(Matiere2,NotesMatiere2Etudiant3);
+    		
+            Etudiant Etudiant1 = new Etudiant("Etudiant "+(int)(Math.random()*100),MapEtudiant1);   
+    	    Etudiant Etudiant2 = new Etudiant("Etudiant "+(int)(Math.random()*100),MapEtudiant2);  
+    	    Etudiant Etudiant3 = new Etudiant("Etudiant "+(int)(Math.random()*100),MapEtudiant3);  
     	   
     	    ArrayList<Etudiant> newListeEtudiant = new ArrayList<Etudiant>();
 
     	    newListeEtudiant.add(Etudiant1);
     	    newListeEtudiant.add(Etudiant2);
     	    newListeEtudiant.add(Etudiant3);
-    	    
-    	    Matiere Matiere1 = new Matiere("Anglais",(float)Math.round(Math.random()*10));
-    		ArrayList<Float> NotesAnglaisEtudiant1 = new ArrayList<Float>();
-    		NotesAnglaisEtudiant1.add(5.0f);
-    		NotesAnglaisEtudiant1.add(5.0f);
-    		
-    		Matiere Matiere2 = new Matiere("Maths",(float)Math.round(Math.random()*10));
-    		ArrayList<Float> NotesMathsEtudiant1 = new ArrayList<Float>();
-    		NotesMathsEtudiant1.add(15.0f);
-    		NotesMathsEtudiant1.add(15.0f);
+    	  
     	    
     	    ArrayList<Matiere> ListeMatiereNewPromotion = new ArrayList<Matiere>();
     	    ListeMatiereNewPromotion.add(Matiere2);
