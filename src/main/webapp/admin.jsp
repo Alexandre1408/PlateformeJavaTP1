@@ -36,5 +36,9 @@
    	    <form method="post" action="Deconnexion">
 	        <input type="submit" value="Deconnexion" class="sansLabel" />
 	    </form>
+	    
+	    <form method="get" action="NewPromotion">
+	        <input type="submit" value="Créer une nouvelle promotion" class="sansLabel" />
+	    </form>
     </body>
 </html>

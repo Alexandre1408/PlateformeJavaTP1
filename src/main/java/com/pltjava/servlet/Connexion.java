@@ -27,7 +27,7 @@ public class Connexion extends HttpServlet
 
         form.connecterUtilisateur(request);
         
-        request.setAttribute( "form", form );
+        request.setAttribute("form",form);
         
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();

@@ -115,6 +115,19 @@ public class Database
 		return null;
 	}
 	
+	public static boolean PromotionExists(String nom) 
+	{
+		boolean flag=false;
+        for(Promotion promotionIterator : ListePromotions)
+		{
+            if(promotionIterator.getNomPromotion().equals(nom))
+            {
+                flag=true;
+            }
+		}
+        return flag;
+	}
+	
 	//Ajoute un etudiant dans la liste des etudiants
 	public static void addUtilisateur(Utilisateur utilisateurToAdd)
 	{
@@ -168,7 +181,7 @@ public class Database
 		test.put(Anglais, NotesAnglaisEtudiant1);
 		test.put(Maths, NotesMathsEtudiant1);
 
-	    Etudiant Kaaris = new Etudiant("Kaaris",test );   
+	    Etudiant Kaaris = new Etudiant("Kaaris",test);   
 	    Etudiant Booba = new Etudiant("Booba", 15);  
 	    Etudiant Pablo = new Etudiant("Pablo", 7);  
 	    Etudiant Popio = new Etudiant("Popio", 20);
