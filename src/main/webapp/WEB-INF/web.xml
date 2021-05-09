@@ -40,6 +40,7 @@
 		<servlet-name>Inscription</servlet-name>
 		<servlet-class>com.pltjava.servlet.Inscription</servlet-class>
 	</servlet>
+	
 	<servlet>
 		<servlet-name>Etudiants</servlet-name>
 		<servlet-class>com.pltjava.servlet.Etudiants</servlet-class>
@@ -53,6 +54,8 @@
 	<servlet>
 		<servlet-name>Suppresion</servlet-name>
 		<servlet-class>com.pltjava.servlet.Suppresion</servlet-class>
+	</servlet>
+	
 	<servlet>
 		<servlet-name>NewPromotion</servlet-name>
 		<servlet-class>com.pltjava.servlet.NewPromotion</servlet-class>
@@ -77,15 +80,18 @@
 		<servlet-name>Etudiants</servlet-name>
 		<url-pattern>/etudiant</url-pattern>
 	</servlet-mapping>
+	
 	<servlet-mapping>
 		<servlet-name>Deconnexion</servlet-name>
 		<url-pattern>/Deconnexion</url-pattern>
 	</servlet-mapping>
+	
 	<servlet-mapping>
 		<servlet-name>Suppresion</servlet-name>
 		<url-pattern>/suppresion</url-pattern>
 	</servlet-mapping>
-
+	
+	<servlet-mapping>
 		<servlet-name>NewPromotion</servlet-name>
 		<url-pattern>/NewPromotion</url-pattern>
 	</servlet-mapping>
