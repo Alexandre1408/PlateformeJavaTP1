@@ -28,4 +28,10 @@ public class Matiere {
 		this.coeff = coeff;
 	}
 
+	@Override
+	public String toString() {
+		return "Matiere [nomMatiere=" + nomMatiere + ", coeff=" + coeff + "]";
+	}
+	
+	
 }

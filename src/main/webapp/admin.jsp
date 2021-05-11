@@ -41,7 +41,7 @@
    	 	
    	 	<br>
    	 	
-   		<form method="get" action="NewPromotion">
+   		<form method="post" action="NewPromotion">
 	        <input type="submit" value="Créer une nouvelle promotion" class="sansLabel" />
 	    </form>
    	 	

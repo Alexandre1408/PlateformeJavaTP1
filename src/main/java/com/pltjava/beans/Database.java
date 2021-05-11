@@ -164,6 +164,19 @@ public class Database
 		ListePromotions = listePromotions;
 	}
 	
+	public static Matiere getMatiereByName(String nomMatiere)
+	{
+		for(Promotion prom : Database.getListePromotions())
+		{
+			for(Matiere mat : prom.getListeMat())
+			{
+				if(mat.getNomMatiere().equals(nomMatiere))
+					return mat;
+			}
+		}
+		return null;
+	}
+
 	public static void initializeData()
 	{
 		HashMap<Matiere,ArrayList<Float>> test = new HashMap<Matiere,ArrayList<Float>>();
@@ -173,10 +186,12 @@ public class Database
 		NotesAnglaisEtudiant1.add(5.0f);
 		NotesAnglaisEtudiant1.add(5.0f);
 		
+		
 		Matiere Maths = new Matiere("Maths", 9.0f);
 		ArrayList<Float> NotesMathsEtudiant1 = new ArrayList<Float>();
 		NotesMathsEtudiant1.add(15.0f);
 		NotesMathsEtudiant1.add(15.0f);
+		
 		
 		test.put(Anglais, NotesAnglaisEtudiant1);
 		test.put(Maths, NotesMathsEtudiant1);
@@ -217,5 +232,7 @@ public class Database
 	    
 		Promotion Di3 = new Promotion("Di3",ListeEtudiantDi3, ListeMatiereDi3);
 		Database.addPromotion(Di3);    	
+		
+		Database.addUtilisateur(new Utilisateur("tom","tom"));
 	}
 }

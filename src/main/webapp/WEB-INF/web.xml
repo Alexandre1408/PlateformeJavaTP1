@@ -60,6 +60,10 @@
 		<servlet-name>NewPromotion</servlet-name>
 		<servlet-class>com.pltjava.servlet.NewPromotion</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>CreationPromotion</servlet-name>
+		<servlet-class>com.pltjava.servlet.CreationPromotion</servlet-class>
+	</servlet>
  	
 	<servlet-mapping>
 		<servlet-name>Connexion</servlet-name>
@@ -94,6 +98,10 @@
 	<servlet-mapping>
 		<servlet-name>NewPromotion</servlet-name>
 		<url-pattern>/NewPromotion</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreationPromotion</servlet-name>
+		<url-pattern>/CreationPromotion</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>

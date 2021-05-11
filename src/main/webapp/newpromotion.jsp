@@ -10,21 +10,25 @@
         <title>Création d'une nouvelle promotion</title>
     </head>
     <body>
-        <form method="post" action="NewPromotion">
+        <form method="post" action="CreationPromotion">
             <fieldset>
 
 
                 <label for="nompromotion">Nom de la nouvelle promotion<span class="requis"> </span></label>
                 <input type="text" id="nompromotion" name="nompromotion" value="" size="20" maxlength="60" />
-                <span class="erreur">${form.erreurs['nompromotion']}</span>
+         
                 <br />
+				
+     			<c:forEach items="${list}" var="value">
+  					<label><input type='checkbox' name="matiere" value="${value}"/>${value}</label>
+  					<br>
+ 				</c:forEach>
+			<br><br>
 
-     
 				
                 <input type="submit" value="Créer la nouvelle promotion" class="sansLabel" />
                 <br />
-                
-                <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
+            
               
             </fieldset>
         </form>

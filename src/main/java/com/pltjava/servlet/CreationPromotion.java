@@ -6,33 +6,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pltjava.beans.Database;
-import com.pltjava.forms.AdminForm;
+import com.pltjava.beans.Matiere;
 import com.pltjava.forms.NewPromotionForm;
 
 /**
- * Servlet implementation class NewPromotion
+ * Servlet implementation class CreationPromotion
  */
-public class NewPromotion extends HttpServlet {
+public class CreationPromotion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+      
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/newpromotion.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String nomMatiere[] =  request.getParameterValues("matiere");
 		NewPromotionForm form = new NewPromotionForm();
-		form.initializeMatiere();
-		//adminForm.remplirlisteEtuParPromo();
-		
-        request.setAttribute("list",form.getNameAllMatiere());
-        this.getServletContext().getRequestDispatcher("/newpromotion.jsp").forward(request, response );	
-    }
+		form.nouvellePromotion(request, nomMatiere);
+		this.getServletContext().getRequestDispatcher("/admin").forward( request, response );	
+	}
 
 }
