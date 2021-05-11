@@ -247,9 +247,9 @@ public class Database
 		acuteMap.put(Physique, new ArrayList<>(Arrays.asList(3.14f, 6.28f, 9.56f)));
 		
 	    ArrayList<Etudiant> ListeEtudiantDi3 = new ArrayList<Etudiant>();
-	    Etudiant JeanCharles = new Etudiant("Jean Charles", 20 );   
-	    Etudiant Mert = new Etudiant("Mert", 18);  
-	    Etudiant Acute = new Etudiant("Acute", 19);  
+	    Etudiant JeanCharles = new Etudiant("Jean Charles", jcMap );   
+	    Etudiant Mert = new Etudiant("Mert", mertMap);  
+	    Etudiant Acute = new Etudiant("Acute", acuteMap);  
 	    ListeEtudiantDi3.add(JeanCharles);
 	    ListeEtudiantDi3.add(Mert);
 	    ListeEtudiantDi3.add(Acute);
