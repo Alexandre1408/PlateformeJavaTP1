@@ -60,15 +60,15 @@ public class NewPromotionForm {
         erreurs.put(champ,message);
     }
     
-    
+    //Verifie si au moins une matiere est cochée
+    private void checkMatiere(String[] nomsMatiere) throws Exception
+    {
+    	if(nomsMatiere==null)
+    		throw new Exception("Veuillez cocher au moins une matière");
+    }
     public void nouvellePromotion(HttpServletRequest request, String[] nomsMatiere) 
     {	
-    	ArrayList<Matiere> ListeMatieres= new ArrayList<Matiere>();
-   
-    	for(String nomMat : nomsMatiere)
-    	{
-    		ListeMatieres.add(Database.getMatiereByName(nomMat));
-    	}
+    	boolean isEmpty=true;
 
         String nom = getChamp(request,CHAMP_NOMPROMOTION);
 
@@ -80,11 +80,27 @@ public class NewPromotionForm {
             setErreur(CHAMP_NOMPROMOTION,e.getMessage());
         }
 
+        try
+        {
+        	checkMatiere(nomsMatiere);
+        }
+        catch(Exception e)
+        {
+        	setErreur(CHAMP_NOMPROMOTION, e.getMessage());
+        }
         
         if (erreurs.isEmpty()) //Si pas d'erreur on crée l'utilisateur
         {
             resultat = "Succès de la création."; 
         	
+            ArrayList<Matiere> ListeMatieres= new ArrayList<Matiere>();
+            
+        	
+        	for(String nomMat : nomsMatiere)
+        	{
+        		isEmpty=false;
+        		ListeMatieres.add(Database.getMatiereByName(nomMat));
+        	}
             
             ArrayList<HashMap<Matiere,ArrayList<Float>>> MapEtudiants = new ArrayList<HashMap<Matiere,ArrayList<Float>>>();
             

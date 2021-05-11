@@ -31,7 +31,10 @@ public class CreationPromotion extends HttpServlet {
 		String nomMatiere[] =  request.getParameterValues("matiere");
 		NewPromotionForm form = new NewPromotionForm();
 		form.nouvellePromotion(request, nomMatiere);
-		this.getServletContext().getRequestDispatcher("/admin").forward( request, response );	
+		if(form.getErreurs().isEmpty())
+			this.getServletContext().getRequestDispatcher("/admin").forward( request, response );
+		else		
+	        this.getServletContext().getRequestDispatcher("/NewPromotion").forward(request,response);
 	}
 
 }
