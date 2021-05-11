@@ -14,13 +14,14 @@ import com.pltjava.beans.Promotion;
 public class NewPromotionForm {
 	private static final String CHAMP_NOMPROMOTION = "nompromotion";
     //private static final String CHAMP_NAME = "name";
-    
+	
+	private ArrayList<Matiere> AllMatiere = new ArrayList<Matiere>();
     private String resultat;
     private Map<String, String> erreurs = new HashMap<String, String>();
 
     public NewPromotionForm()
     {
-    	
+
     }
     
     public String getResultat() 
@@ -59,8 +60,16 @@ public class NewPromotionForm {
         erreurs.put(champ,message);
     }
     
-    public void nouvellePromotion(HttpServletRequest request) 
+    
+    public void nouvellePromotion(HttpServletRequest request, String[] nomsMatiere) 
     {	
+    	ArrayList<Matiere> ListeMatieres= new ArrayList<Matiere>();
+   
+    	for(String nomMat : nomsMatiere)
+    	{
+    		ListeMatieres.add(Database.getMatiereByName(nomMat));
+    	}
+
         String nom = getChamp(request,CHAMP_NOMPROMOTION);
 
         try
@@ -76,47 +85,37 @@ public class NewPromotionForm {
         {
             resultat = "Succès de la création."; 
         	
+            
+            ArrayList<HashMap<Matiere,ArrayList<Float>>> MapEtudiants = new ArrayList<HashMap<Matiere,ArrayList<Float>>>();
+            
             HashMap<Matiere,ArrayList<Float>> MapEtudiant1 = new HashMap<Matiere,ArrayList<Float>>();
             HashMap<Matiere,ArrayList<Float>> MapEtudiant2 = new HashMap<Matiere,ArrayList<Float>>();
             HashMap<Matiere,ArrayList<Float>> MapEtudiant3 = new HashMap<Matiere,ArrayList<Float>>();
             
-            Matiere Matiere1 = new Matiere("Matiere "+(int)(Math.random()*100),(float)Math.round(Math.random()*10));
-    		Matiere Matiere2 = new Matiere("Matiere "+(int)(Math.random()*100),(float)Math.round(Math.random()*10));
-    		
-    	
-    		ArrayList<Float> NotesMatiere1Etudiant1 = new ArrayList<Float>();
-    		NotesMatiere1Etudiant1.add((float)Math.round((Math.random()*20)*100)/100);
-    		NotesMatiere1Etudiant1.add((float)Math.round((Math.random()*20)*100)/100);
-    		ArrayList<Float> NotesMatiere2Etudiant1 = new ArrayList<Float>();
-    		NotesMatiere2Etudiant1.add((float)Math.round((Math.random()*20)*100)/100);
-    		NotesMatiere2Etudiant1.add((float)Math.round((Math.random()*20)*100)/100);
-    		
-    		ArrayList<Float> NotesMatiere1Etudiant2 = new ArrayList<Float>();
-    		NotesMatiere1Etudiant2.add((float)Math.round((Math.random()*20)*100)/100);
-    		NotesMatiere1Etudiant2.add((float)Math.round((Math.random()*20)*100)/100);
-    		ArrayList<Float> NotesMatiere2Etudiant2 = new ArrayList<Float>();
-    		NotesMatiere2Etudiant2.add((float)Math.round((Math.random()*20)*100)/100);
-    		NotesMatiere2Etudiant2.add((float)Math.round((Math.random()*20)*100)/100);
-    		
-    		ArrayList<Float> NotesMatiere1Etudiant3 = new ArrayList<Float>();
-    		NotesMatiere1Etudiant3.add((float)Math.round((Math.random()*20)*100)/100);
-    		NotesMatiere1Etudiant3.add((float)Math.round((Math.random()*20)*100)/100);
-    		ArrayList<Float> NotesMatiere2Etudiant3 = new ArrayList<Float>();
-    		NotesMatiere2Etudiant3.add((float)Math.round((Math.random()*20)*100)/100);
-    		NotesMatiere2Etudiant3.add((float)Math.round((Math.random()*20)*100)/100);
+            MapEtudiants.add(MapEtudiant1);
+            MapEtudiants.add(MapEtudiant2);
+            MapEtudiants.add(MapEtudiant3);
             
-    		MapEtudiant1.put(Matiere1,NotesMatiere1Etudiant1);
-    		MapEtudiant1.put(Matiere2,NotesMatiere2Etudiant1);
-    		
-    		MapEtudiant2.put(Matiere1,NotesMatiere1Etudiant2);
-    		MapEtudiant2.put(Matiere2,NotesMatiere2Etudiant2);
-    		
-    		MapEtudiant3.put(Matiere1,NotesMatiere1Etudiant3);
-    		MapEtudiant3.put(Matiere2,NotesMatiere2Etudiant3);
-    		
-            Etudiant Etudiant1 = new Etudiant("Etudiant "+(int)(Math.random()*100),MapEtudiant1);   
-    	    Etudiant Etudiant2 = new Etudiant("Etudiant "+(int)(Math.random()*100),MapEtudiant2);  
-    	    Etudiant Etudiant3 = new Etudiant("Etudiant "+(int)(Math.random()*100),MapEtudiant3);  
+
+            
+            for(int j=0; j < 3; j++)
+            {
+	            for(int i=0; i < ListeMatieres.size();i++)
+		    	{
+			    	ArrayList<Float> NotesMatiere = new ArrayList<Float>();
+			    	NotesMatiere.add((float)Math.round((Math.random()*20)*100)/100);
+			    	NotesMatiere.add((float)Math.round((Math.random()*20)*100)/100);
+			    
+			    	MapEtudiants.get(j).put(ListeMatieres.get(i),NotesMatiere);
+		    	}
+	          
+            }
+	    		
+            Etudiant Etudiant1 = new Etudiant("Etudiant "+(int)(Math.random()*100),MapEtudiants.get(0));   
+            
+            Etudiant Etudiant2 = new Etudiant("Etudiant "+(int)(Math.random()*100),MapEtudiants.get(1));  
+       
+            Etudiant Etudiant3 = new Etudiant("Etudiant "+(int)(Math.random()*100),MapEtudiants.get(2));  
     	   
     	    ArrayList<Etudiant> newListeEtudiant = new ArrayList<Etudiant>();
 
@@ -124,13 +123,37 @@ public class NewPromotionForm {
     	    newListeEtudiant.add(Etudiant2);
     	    newListeEtudiant.add(Etudiant3);
     	  
-    	    
-    	    ArrayList<Matiere> ListeMatiereNewPromotion = new ArrayList<Matiere>();
-    	    ListeMatiereNewPromotion.add(Matiere2);
-    	    ListeMatiereNewPromotion.add(Matiere1);
-            Database.addPromotion(new Promotion(nom,newListeEtudiant,ListeMatiereNewPromotion));
+  
+            Database.addPromotion(new Promotion(nom,newListeEtudiant,ListeMatieres));
         }
         else //Si des erreurs on return null
             resultat = "Échec de création.";
     }
+
+	public ArrayList<String> getNameAllMatiere() 
+	{
+		ArrayList<String> nameAllMatiere=new ArrayList<String>();
+		for(Matiere mat : AllMatiere)
+		{
+			nameAllMatiere.add(mat.getNomMatiere());
+		}
+		return nameAllMatiere;
+	}
+
+	public void setAllMatiere(ArrayList<Matiere> allMatiere) 
+	{
+		AllMatiere = allMatiere;
+	}
+	
+	public void initializeMatiere()
+	{
+		for(Promotion prom : Database.getListePromotions())
+		{
+			for(Matiere mat : prom.getListeMat())
+			{
+				if(!AllMatiere.contains(mat))
+					AllMatiere.add(mat);
+			}
+		}
+	}
 }
