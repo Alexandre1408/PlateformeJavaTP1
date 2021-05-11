@@ -16,6 +16,8 @@
 
                 <label for="nompromotion">Nom de la nouvelle promotion<span class="requis"> </span></label>
                 <input type="text" id="nompromotion" name="nompromotion" value="" size="20" maxlength="60" />
+                <span class="erreur">${form.erreurs['nompromotion']}</span>
+
          
                 <br />
 				
