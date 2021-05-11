@@ -1,6 +1,7 @@
 package com.pltjava.beans;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -179,7 +180,12 @@ public class Database
 
 	public static void initializeData()
 	{
-		HashMap<Matiere,ArrayList<Float>> test = new HashMap<Matiere,ArrayList<Float>>();
+		HashMap<Matiere,ArrayList<Float>> kaarisMap = new HashMap<Matiere,ArrayList<Float>>();
+		HashMap<Matiere,ArrayList<Float>> boobaMap = new HashMap<Matiere,ArrayList<Float>>();
+		HashMap<Matiere,ArrayList<Float>> pabloMap = new HashMap<Matiere,ArrayList<Float>>();
+		HashMap<Matiere,ArrayList<Float>> popioMap = new HashMap<Matiere,ArrayList<Float>>();
+
+		
 		
 		Matiere Anglais = new Matiere("Anglais", 3.0f);
 		ArrayList<Float> NotesAnglaisEtudiant1 = new ArrayList<Float>();
@@ -193,13 +199,22 @@ public class Database
 		NotesMathsEtudiant1.add(15.0f);
 		
 		
-		test.put(Anglais, NotesAnglaisEtudiant1);
-		test.put(Maths, NotesMathsEtudiant1);
+		kaarisMap.put(Anglais, NotesAnglaisEtudiant1);
+		kaarisMap.put(Maths, NotesMathsEtudiant1);
+		
+		boobaMap.put(Anglais,  new ArrayList<>(Arrays.asList(3.14f, 6.28f, 9.56f)));
+		boobaMap.put(Maths,  new ArrayList<>(Arrays.asList(7.14f, 5.28f, 11.56f)));
+		
+		pabloMap.put(Anglais,  new ArrayList<>(Arrays.asList(15.14f)));
+		pabloMap.put(Maths,  new ArrayList<>(Arrays.asList(18.14f)));
+		
+		popioMap.put(Anglais,  new ArrayList<>(Arrays.asList(4.14f)));
+		popioMap.put(Maths,  new ArrayList<>(Arrays.asList(9.14f)));
 
-	    Etudiant Kaaris = new Etudiant("Kaaris",test);   
-	    Etudiant Booba = new Etudiant("Booba", 15);  
-	    Etudiant Pablo = new Etudiant("Pablo", 7);  
-	    Etudiant Popio = new Etudiant("Popio", 20);
+	    Etudiant Kaaris = new Etudiant("Kaaris",kaarisMap);   
+	    Etudiant Booba = new Etudiant("Booba", boobaMap);  
+	    Etudiant Pablo = new Etudiant("Pablo", pabloMap);  
+	    Etudiant Popio = new Etudiant("Popio", popioMap);
 
 	    ArrayList<Etudiant> ListeEtudiantDi4 = new ArrayList<Etudiant>();
 
@@ -215,12 +230,22 @@ public class Database
 		Promotion Di4 = new Promotion("Di4",ListeEtudiantDi4, ListeMatiereDi4);
 		Database.addPromotion(Di4);
 
+		
 		ArrayList<Matiere> ListeMatiereDi3 = new ArrayList<Matiere>();
 		Matiere Francais = new Matiere("Francais", 6.0f);
 		Matiere Physique = new Matiere("Physique", 8.0f);
 		ListeMatiereDi3.add(Physique);
 		ListeMatiereDi3.add(Francais);
+		
+		HashMap<Matiere,ArrayList<Float>> jcMap = new HashMap<Matiere,ArrayList<Float>>();
+		HashMap<Matiere,ArrayList<Float>> mertMap = new HashMap<Matiere,ArrayList<Float>>();
+		HashMap<Matiere,ArrayList<Float>> acuteMap = new HashMap<Matiere,ArrayList<Float>>();
 
+		
+		jcMap.put(Francais, new ArrayList<>(Arrays.asList(3.14f, 9.56f)));
+		mertMap.put(Physique, new ArrayList<>(Arrays.asList(3.14f, 6.28f, 9.56f)));
+		acuteMap.put(Physique, new ArrayList<>(Arrays.asList(3.14f, 6.28f, 9.56f)));
+		
 	    ArrayList<Etudiant> ListeEtudiantDi3 = new ArrayList<Etudiant>();
 	    Etudiant JeanCharles = new Etudiant("Jean Charles", 20 );   
 	    Etudiant Mert = new Etudiant("Mert", 18);  
