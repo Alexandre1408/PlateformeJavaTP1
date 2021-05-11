@@ -19,11 +19,19 @@
             	<fieldset>            
                 
 					<h2>Promotion : ${entry.key.nomPromotion} , Moyenne de la promotion ${entry.key.moyennePromotion} </h2>
-					
-					<c:forEach items="${entry.value}" var="item" >
-						<label><input type='checkbox' name="etudiant" value="${item.nomEtu}"/>${item.nomEtu} Moyenne generale ${item.moyenneGeneral}</label>
-						<br>
-					</c:forEach>
+				    <br/><br/><br/>
+				    
+			        <table border="1">
+	            	<tr>
+	            		<th> Nom de l'étudiant </th>
+            			<th> Moyenne générale </th>
+	            	</tr>
+						<c:forEach items="${entry.value}" var="item" >
+			            	<tr>      
+			            		<td> <label><input type='checkbox' name="etudiant" value="${item.nomEtu}"/>${item.nomEtu} </label></td> <td> <label>Moyenne generale ${item.moyenneGeneral}</label><td>
+		                	</tr>
+						</c:forEach>
+				    </table>
 					
            	 	</fieldset>            
 			</c:forEach>
